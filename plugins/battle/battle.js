@@ -41,7 +41,7 @@ function startPluginBattle(aSettings) {
 
 	console.log('Autobattle start');
 
-	internalState.enemies.count = $('#mes .B2U').length;
+	internalState.enemies.count = $('#mes .B2U').length + $('#mes .B2').length;
 
 	// запускаем бой
 	setTimeout(function () {
@@ -84,7 +84,7 @@ function battle_simpleLoop() {
 			}
 			if (
 				$(item).find('img[src*=spirit_survive]').length
-				&& (internalState.enemies.count > 1 && $('#mes .B2U').length == 1)
+				&& (internalState.enemies.count > 1 && ($('#mes .B2U').length + $('#mes .B2').length) == 1)
 			) {
 				click = true;
 			}
