@@ -1,0 +1,67 @@
+{
+  "manifest_version": 2,
+  "name": "Расширения для МБК (mycombats.org)",
+  "description": "Коллекция плагинов для он-лайн игры Мой Бойцовский Клуб",
+  "version": "0.1.0",
+
+  "icons": {
+    "128": "images/128x128.png",
+    "38": "images/38x38.png",
+    "19": "images/19x19.png"
+  },
+  "page_action": {
+    "default_icon": {
+      "38": "images/38x38.png",
+      "19": "images/19x19.png"
+    },
+    "default_title": "МБК extension",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "http://mycombats.org/*", "http://*.mycombats.org/*" ],
+      "js": [ "icon.js" ],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [ "http://mycombats.org/main.php?edit=1*", "http://*.mycombats.org/main.php?edit=1*" ],
+      "js": [ "jquery.js", "plugins/inventory/inventory.js" ],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": [ "http://mycombats.org/city.php*", "http://*.mycombats.org/city.php*", "http://mycombats.org/main.php*", "http://*.mycombats.org/main.php*" ],
+      "js": [ "jquery.js", "plugins/interceptor/interceptor.js" ],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": [ "http://mycombats.org/ch.php?online=*", "http://*.mycombats.org/ch.php?online=*" ],
+      "js": [ "jquery.js", "jquery.cookie.js", "plugins/interceptor/interceptor_locator.js" ],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": [ "http://mycombats.org/fbattle.php", "http://*.mycombats.org/fbattle.php*" ],
+      "js": [ "jquery.js", "plugins/battle/battle.js" ],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": [ "http://mycombats.org/grotto/*", "http://*.mycombats.org/grotto/*" ],
+      "js": [ "jquery.js", "plugins/dungeons/models.js", "plugins/dungeons/routes.js", "plugins/dungeons/maps.js", "plugins/dungeons/dungeons.js" ],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "tabs",
+    "unlimitedStorage",
+    "http://mycombats.org/*", "http://*.mycombats.org/*"
+  ]
+
+}

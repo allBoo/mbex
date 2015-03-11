@@ -1,0 +1,1024 @@
+
+
+
+<HTML style="background-color: #E2E0E0;;">
+<HEAD><SCRIPT src=/js/my.js></SCRIPT>
+    <link rel=stylesheet type="text/css" href="i/main.css?">
+    <meta content="text/html; charset=windows-1251" http-equiv=Content-type>
+    <META Http-Equiv=Cache-Control Content=no-cache>
+    <meta http-equiv=PRAGMA content=NO-CACHE>
+    <META Http-Equiv=Expires Content=0>
+    <SCRIPT>
+        var attacks = 1; // кол. атак
+                var def_zones = 'головы и груди,груди и живота,живота и пояса,пояса и ног,ног и головы'.split(',');
+                attacks=attacks+0        ;
+            </SCRIPT>
+    <SCRIPT src='/i/combats_096_ru.js?'></SCRIPT>
+    <!--<SCRIPT src='/js/jquery.js'></SCRIPT>-->
+    <SCRIPT LANGUAGE="JavaScript" SRC="/i/sl2.js"></SCRIPT>
+    <SCRIPT LANGUAGE="JavaScript" SRC="/i/ch.js"></SCRIPT>
+    <SCRIPT LANGUAGE="JavaScript" SRC="/js/mymain.js"></SCRIPT>
+
+    <SCRIPT>
+        <!--
+                function fullfastshow(a,b,c,d,e,f){
+					if(typeof b=="string")
+						b=a.getElementById(b);
+						
+					var g=(typeof(c.target) != 'undefined' ? c.target : (c.srcElement?c.srcElement:c)),h=g;
+					
+					c=g.offsetLeft;
+						for(var j=g.offsetTop;h.offsetParent&&h.offsetParent!=a.body;)
+						{
+							h=h.offsetParent;
+							c+=h.offsetLeft;
+							j+=h.offsetTop;
+							if(h.scrollTop)
+								j-=h.scrollTop;
+							if(h.scrollLeft)
+								c-=h.scrollLeft}
+							if(d!=""&&b.style.visibility!="visible")
+							{
+								b.innerHTML="        <small>"+d+"</small>        ";
+							if(e)
+							{
+								b.style.width=e;
+								b.whiteSpace=""
+							}
+							else
+							{
+								b.whiteSpace="nowrap";
+								b.style.width="auto";
+								//b.style.maxWidth="900px";
+							}
+							if(f)
+								b.style.height=f
+						}
+						d=c+g.offsetWidth+10;
+						e=j+5;
+						if(d+b.offsetWidth+3>a.body.clientWidth+a.body.scrollLeft)
+						{
+							d=c-b.offsetWidth-5;
+							if(d<0)
+								d=0
+						}
+						if(e+b.offsetHeight+3>a.body.clientHeight+a.body.scrollTop)
+						{
+							e=a.body.clientHeight+a.body.scrollTop-b.offsetHeight-3;
+							if(e<0)e=0
+						}
+						b.style.left=d+"px";
+						b.style.top=e+"px";
+						if(b.style.visibility!="visible")
+							b.style.visibility="visible"
+					}
+					
+					function fullhideshow(a){if(typeof        a=="string")a=document.getElementById(a);a.style.visibility="hidden";a.style.left=a.style.top="-9999px"}
+
+                function gfastshow(dsc, dx, dy, event) { fullfastshow(document, mmoves3, (typeof(event) != 'undefined' ? event : window.event), dsc, dx, dy); }
+                function ghideshow() { fullhideshow(mmoves3); }
+                function note(title, script, name,coma,errk){
+                var errkom=''; var com='';
+                if (errk==1) { errkom='Нельзя использовать символы: /\:*?"<>|+%<br>'; com=coma}
+                document.all("hint3").innerHTML = '        <table width=100% cellspacing=1 cellpadding=0 bgcolor=CCC3AA>            <tr>                <td align=center><B>'+title+'</td>                <td width=20 align=right valign=top style="cursor: pointer" onclick="closehint3();"><BIG><B>x</td>            </tr>            <tr>                <td colspan=2>'+                    '                    <form action="'+script+'" method=POST style="margin:0; padding: 0;">                        <table width=100% cellspacing=0 cellpadding=2 bgcolor=FFF6DD>                            <tr><INPUT TYPE=hidden name=sd4 value="6">                                <td colspan=2><font color=red>'+                                    errkom+'</font>Введите текст                                </TD>                            </TR>                            <TR>                                <TD width=50% align=right><INPUT TYPE=text NAME="'+name+'" value="'+com+'"></TD>                                <TD width=50%><INPUT TYPE="submit" value=" »» "></TD>                            </TR>                        </TABLE>                    </FORM>                </td>            </tr>        </table>        ';        document.all("hint3").style.visibility = "visible";        document.all("hint3").style.left = 200;        document.all("hint3").style.top = 60;        document.all(name).focus();        Hint3Name = name;        }
+        /**@deprecated*/
+                function Prv(logins)
+                {
+/*
+                    mytop.frames['bottom'].window.document.F1.text.focus();
+                    mytop.frames['bottom'].document.forms[0].text.value = logins + mytop.frames['bottom'].document.forms[0].text.value;
+*/
+                }
+                function setattack() {attack=true}
+                function setdefend() {defend=true}
+        -->
+    </SCRIPT>
+    <script>
+        function refreshPeriodic()
+        {
+        location.href='/fbattle.php?reload=wait&batl=&autorefresh=1';//reload();
+                timerID=setTimeout("refreshPeriodic()",30000);
+        }
+        timerID=setTimeout("refreshPeriodic()",30000);
+        -->
+    </script>
+    <style type="text/css">
+        .menu {
+            background-color: #d2d0d0;
+            border-color: #ffffff #626060 #626060 #ffffff;
+            border-style: solid;
+            border-width: 1px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            visibility: hidden;
+        }
+
+        a.menuItem {
+            border: 0px solid #000000;
+            color: #003388;
+            display: block;
+            font-family: MS Sans Serif, Arial, Tahoma, sans-serif;
+            font-size: 8pt;
+            font-weight: bold;
+            padding: 2px 12px 2px 8px;
+            text-decoration: none;
+        }
+
+        a.menuItem:hover {
+            background-color: #a2a2a2;
+            color: #0066FF;
+        }
+
+        span {
+
+            FONT-FAMILY: Verdana, Arial, Helvetica, Tahoma, sans-serif;
+            text-decoration: none;
+            FONT-WEIGHT: bold;
+            cursor: pointer;
+        }
+
+        .my_clip_button {
+            border: 0px solid #000000;
+            color: #003388;
+            display: block;
+            font-family: MS Sans Serif, Arial, Tahoma, sans-serif;
+            font-size: 8pt;
+            font-weight: bold;
+            padding: 2px 12px 2px 8px;
+            text-decoration: none;
+        }
+
+        .my_clip_button.hover {
+            background-color: #a2a2a2;
+            color: #0066FF;
+        }
+    </style>
+<script>
+    function pause(n){
+     today=new Date()
+      today2=today
+      while((today2-today)<=n){
+      today2=new Date()
+      }
+    }
+    function onunload(){
+    pause(500);
+    }
+</script>
+        
+    <script>
+                                                   	var wr_grotto_supostat_id = 0;
+
+                                                   	function wr_grotto_win_close()
+                                                   	{
+                                                   		document.getElementById("r_0_0").focus();
+                                                   		mytop.frames['main'].Hint3Name = "";
+                                                   		var _div = document.getElementById('wr_godsend_user_del_83128');
+                                                   		_div.style.display = "none";
+                                                   		_div.innerHTML = "";
+                                                   		var _div = document.getElementById("wr_godsend_game_ask_window_261536");
+                                                   		_div.style.display = "none";
+                                                   		_div.innerHTML = "";
+                                                   		wr_grotto_supostat_id = 0;
+                                                   	}
+
+                                                   	function wr_grotto_set_supostat(id, name)
+                                                   	{
+                                                   		try
+                                                   		{
+                                                   			var _div = document.getElementById('wr_grotto_supostat_name_7246');
+                                                   			if (typeof(_div) != 'undefined')
+                                                   			{
+                                                   				wr_grotto_supostat_id = id;
+                                                   				_div.value = name;
+                                                   			}
+                                                   		}
+                                                   		catch (err) {}
+                                                   	}
+                                                   	
+                                                   	function wr_some_method_123()
+                                                   	{
+														document.getElementById('wr_grotto_user_change_uid').value=document.getElementById('wr_grotto_supostat_name_7246').value;
+														document.getElementById('wr_grotto_user_change_user_do').value=1;
+														document.getElementById('wr_grotto_user_change').submit();
+                                                   	}
+                                                   	
+                                                   	function wr_some_method_456()
+                                                   	{
+														document.getElementById('wr_grotto_user_change_uid').value=document.getElementById('wr_grotto_supostat_name_7246').value;
+														document.getElementById('wr_grotto_user_change_user_do').value=2;
+														document.getElementById('wr_grotto_user_change').submit();
+                                                   	}
+
+                                                   	function wr_grotto_set_ul_win(html)
+                                                   	{
+                                                   		wr_grotto_win_close();
+                                                   		document.getElementById("r_0_0").blur();
+                                                   		var _div = document.getElementById('wr_godsend_user_del_83128');
+                                                   		_div.innerHTML = html + '</form>';
+                                                   		_div.style.display = 'block';
+                                                   	}
+
+                                                   	function wr_grotto_set_user_del_win()
+                                                   	{
+                                                   		wr_grotto_set_ul_win(
+															'<form id="wr_grotto_user_change" action="" method="post" style="margin: 0; padding: 0;" onsubmit="wr_some_method_123(); return false;"><input id="wr_grotto_user_change_uid" type="hidden" name="uid" value="" /><input id="wr_grotto_user_change_user_do" type="hidden" name="user_do" value="" />' + 
+                                                   			'<p style="margin: 5px 0 0 0; text-align: center; color: black; font: bold 12px verdana, tahoma;">Выберите персонажа которого<br>хотите выгнать</p>' +
+                                                   			'<img src="/grotto/img/delete1.png" onclick="wr_grotto_win_close();" style="position: absolute; top: 6px; right: 4px; width: 19px; height: 19px; cursor: pointer; margin: 0; pading: 0;" border="0">' +
+                                                   			'<div style="position: absolute; top: 37px; left: 4px; width: 262px; height: 58px;">' +
+                                                   			'<p style="margin: 0 0 0 3px; text-align: left; color: black; font: 12px verdana, tahoma;">Укажите логин персонажа:</p> ' +
+                                                   			'<p style="margin: 0 0 3px 3px; text-align: left; color: black; font: 10px verdana, tahoma;">(можно щелкнуть по логину в чате)</p> ' +
+                                                   			'<input id="wr_grotto_supostat_name_7246" type="text" style="margin: 0 3px 0 5px; vertical-align: middle; width: 123px; height: 18px; font: 11px verdana, tahoma; color: #201a56;" value="">' +
+                                                   			'<img src="/grotto/img/button-1.png" style="width: 29px; height: 22px; cursor: pointer; vertical-align: middle;" onclick="wr_some_method_123();">'+
+                                                                       '</div></form>'
+                                                   		);
+                                                   		mytop.frames['main'].Hint3Name = "wr_grotto_supostat_name_7246";
+                                                   	}
+
+                                                   	function wr_grotto_set_pass_the_trone_win()
+                                                   	{
+                                                   		wr_grotto_set_ul_win(
+                                                   			'<form id="wr_grotto_user_change" action="" method="post" style="margin: 0; padding: 0;" onsubmit="wr_some_method_456(); return false;"><input id="wr_grotto_user_change_uid" type="hidden" name="uid" value="" /><input id="wr_grotto_user_change_user_do" type="hidden" name="user_do" value="" />' + 
+                                                   			'<p style="margin: 5px 0 0 0; text-align: center; color: black; font: bold 12px verdana, tahoma;">Выберите персонажа которому<br>хотите передать лидерство</p>' +
+                                                   			'<img src="/grotto/img/delete1.png" onclick="wr_grotto_win_close();" style="position: absolute; top: 6px; right: 4px; width: 19px; height: 19px; cursor: pointer; margin: 0; pading: 0;" border="0">' +
+                                                   			'<div style="position: absolute; top: 37px; left: 4px; width: 262px; height: 58px;">' +
+                                                   			'<p style="margin: 0 0 0 3px; text-align: left; color: black; font: 12px verdana, tahoma;">Укажите логин персонажа:</p> ' +
+                                                   			'<p style="margin: 0 0 3px 3px; text-align: left; color: black; font: 10px verdana, tahoma;">(можно щелкнуть по логину в чате)</p> ' +
+                                                   			'<input id="wr_grotto_supostat_name_7246" type="text" style="margin: 0 3px 0 5px; vertical-align: middle; width: 123px; height: 18px; font: 11px verdana, tahoma; color: #201a56;" value="">' +
+                                                   			'<img src="/grotto/img/button-1.png" style="width: 29px; height: 22px; cursor: pointer; vertical-align: middle;" onclick="wr_some_method_456();">'+
+                                                                       '</div></form>'
+                                                   		);
+                                                   		mytop.frames['main'].Hint3Name = "wr_grotto_supostat_name_7246";
+                                                   	}
+                                                   </script>
+                           <script type="text/javascript">
+                           	function wr_set_long_div()
+                           	{
+                           		var x = document.getElementById('wr_long_div');
+                           		var h = 285 - x.offsetTop;
+                           		if (h < 5) h = 5;
+                           		x.style.height = h + 'px';
+                           	}
+
+                           	//wr_set_long_div();
+                           </script>
+            <style>
+        #f-content {  margin: 0 250px 0 250px; }
+        #f-left-column{ float: left; width: 250px; }
+        #f-right-column {  width: 250px; float: right; }
+        #f-layout { overflow: hidden; }
+        body{ background-color: #e2e0e0;overflow-y: scroll;        filter: expression(runtimeStyle.filter = '',document.execCommand('BackgroundImageCache', false, true));}
+        html{ background-color: #e2e0e0; filter: expression(runtimeStyle.filter = '',document.execCommand('BackgroundImageCache', false, true));}
+    </style>
+</HEAD>
+<body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0 bgcolor=e2e0e0  onLoad="mytop.setHP(729,1044)" >
+<div id="mmoves3" style="background-color:#FFFFCC; visibility:hidden; z-index: 101; overflow:visible; position:absolute; border-color:#666666; border-style:solid; border-width: 1px; padding: 2px;"></div>
+<div id=hint3 class=ahint></div>
+<div id="mmoves" style="background-color:#FFFFCC; visibility:hidden; z-index: 100; overflow:visible; position:absolute; border-color:#666666; border-style:solid; border-width: 1px; padding: 2px;"></div>
+
+<FORM action="/fbattle.php" method=POST name="f1" id="f1" onKeyUp="set_action();">
+<input type=hidden value='33134957' name=batl><input type=hidden value='' name=enemy1>
+<INPUT TYPE=hidden name=myid value="1053012363">
+<div id=f-layout >
+<div id="f-left-column" >
+    <TABLE width=250 cellspacing=0 cellpadding=0 id="f1t">
+        <TR>
+            <TD valign=top width=250 nowrap>
+                <CENTER>
+                    <!-- memcachedshowpersout_block1(104962)_begin -->
+<script type="text/javascript">
+        var wrAltTxt = false;
+        var wrCityName = 'Capital city';
+        var wrNameOfCircle = '';
+        var wr_mouse_over = function (e)
+        {
+			if (typeof(e) == 'undefined' || typeof(e.target) == 'undefined')
+			{
+				var x = event.x + document.body.scrollLeft;
+				var y = event.y + document.body.scrollTop;
+			}
+			else
+			{
+				var x = e.pageX;
+				var y = e.pageY;
+			}
+
+			wr_mouse_out();
+
+			wrAltTxt = document.createElement('div');
+			wrAltTxt.style.cssText = 'position: absolute; top: ' + (y + 14) + 'px; left: ' + (x + 12) + 'px; background: #ffffcb; border: 1px solid #6e6953;';
+			html = '<p style="font: 10px verdana, tahoma, arial; margin: 2px; padding: 0;"><b>' + wrCityName + '</b><br>' + wrNameOfCircle + '</p>'
+			wrAltTxt.innerHTML = html;
+			document.body.appendChild(wrAltTxt);
+        };
+
+        var wr_mouse_over2 = function (elem, e)
+        {
+			if (typeof(e) == 'undefined' || typeof(e.target) == 'undefined')
+			{
+				return false;
+			}
+			else
+			{
+				var x = e.pageX;
+				var y = e.pageY;
+			}
+
+			wr_mouse_out();
+
+			wrAltTxt = document.createElement('div');
+			wrAltTxt.style.cssText = 'z-index: 1; position: absolute; top: ' + (y + 14) + 'px; left: ' + (x + 12) + 'px; background: #ffffcb; border: 1px solid #6e6953; font: 10px verdana, tahoma, arial; padding: 5px;';
+			if (elem.title)
+			{
+				html = elem.title;
+				elem.alt = elem.title;
+				elem.title = '';
+			}
+			else html = elem.alt;
+
+			html = html.replace(/[\n]/g, '<br>');
+
+			wrAltTxt.innerHTML = html;
+			document.body.appendChild(wrAltTxt);
+        };
+
+        var wr_mouse_over_cap = function (e)
+        {
+			wrCityName = 'Capital city';
+			wrNameOfCircle = wrNameOfCircle1;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_dem = function (e)
+        {
+			wrCityName = 'Demons city';
+			wrNameOfCircle = wrNameOfCircle2;
+			wr_mouse_over(e);
+        }
+        var wr_mouse_over_sun = function (e)
+        {
+			wrCityName = 'Sun city';
+			wrNameOfCircle = wrNameOfCircle11;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_dep = function (e)
+        {
+			wrCityName = 'Angels city';
+			wrNameOfCircle = wrNameOfCircle3;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_glm = function (e)
+        {
+			wrCityName = 'Sand city';
+			wrNameOfCircle = wrNameOfCircle4;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_blood = function (e)
+        {
+			wrCityName = 'Алтарь Крови';
+			wrNameOfCircle = wrNameOfCircle5;
+			wr_mouse_over(e);
+        }
+        var wr_mouse_over_lost = function (e)
+        {
+			wrCityName = 'Emeralds city';
+			wrNameOfCircle = wrNameOfCircle7;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_ptu = function (e)
+        {
+			wrCityName = 'Храм Знаний';
+			wrNameOfCircle = wrNameOfCircle6;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_out = function ()
+        {
+			if (wrAltTxt)
+			{
+				wrAltTxt.parentNode.removeChild(wrAltTxt);
+				wrAltTxt = false;
+			}
+        };
+
+    </script>
+
+<CENTER>
+
+<TABLE cellspacing=0 cellpadding=0 style="	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFFFFF;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-left-color: #FFFFFF;
+	padding: 2px;">
+
+<TR>
+<TD>
+<TABLE border=0 cellSpacing=1 cellPadding=0 width="100%">
+<TBODY>
+<TR vAlign=top>
+<TD>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+
+<TR>
+<TD style="BACKGROUND-IMAGE:none">
+            <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/odezhda/shlemy/maska-haosa/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/ahelmet100.gif" width=60 height=60 title="Маска Хаоса
+Уровень жизни +100
+Уровень маны +100
+Броня головы: 1-10
+Долговечность: 3/500" >    </TD>
+</TR>
+
+<TR>
+    <TD style="BACKGROUND-IMAGE:none">
+        <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/odezhda/naruchi/naruchi-reshimosti-10/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/braslet27.gif" width=60 height=40 title="Наручи Решимости [10]
+Уровень жизни +77
+Уровень маны +135
+Долговечность: 7/50" ></TD>
+</TR>
+
+    <TR>
+        <TD style="BACKGROUND-IMAGE: none">
+        <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="return false;"   src="i/sh/staff_chaos1.gif" width=60 height=60 title="Посох Пламени Хаоса [8] +8
+Долговечность: 3/500
+Уровень жизни +100
+Уровень маны +660
+Урон 1-10" alt="Посох Пламени Хаоса [8] +8
+Долговечность: 3/500
+Уровень жизни +100
+Уровень маны +660
+Урон 1-10" ></TD>
+    </TR>
+
+    <TR>
+        <TD style="BACKGROUND-IMAGE: none">
+        <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/odezhda/plaschi/romantic-red-cloak-10/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/cloak201.gif" width=60 height=80 title="Romantic Red Cloak [10]
+Долговечность: 7/50
+------------
+Garment of Arrogance
+Долговечность: 7/50
+Уровень жизни +90
+Броня корпуса: 12-23
+------------
+Футболка Магистров [8]
+Уровень жизни +60
+Броня корпуса: 4-18
+Долговечность:: 3/200" ></TD>
+    </TR>
+
+<TR><TD style="BACKGROUND-IMAGE: none">
+<img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/odezhda/poyasa/poyas-drevnego-licha/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/belt51.gif" width=60 height=40 title="Пояс Древнего Лича
+Долговечность: 7/100
+Уровень жизни +50
+Уровень маны +65" alt="Пояс Древнего Лича
+Долговечность: 7/100
+Уровень жизни +50
+Уровень маны +65
+Броня пояса: 6-20" ></TD></TR>
+</TBODY>
+</TABLE>
+</TD>
+<TD>
+    <!-- memcachedshowpersout_block1(104962)_end --><TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+<TR>
+    <TD height=20 vAlign=middle>
+        <table cellspacing="0" cellpadding="0" style='line-height: 1'>
+             <tr><td nowrap style="font-size:9px" style="position: relative">
+<IMG SRC='i/1green.gif' name=HP1  id=HP1  WIDTH=83.793103448276 HEIGHT=9 ALT="Уровень жизни"><IMG SRC=i/1silver.gif name=HP2  id=HP2  WIDTH=36.206896551724 HEIGHT=9 ALT="Уровень жизни"><b  id="HP" style="position: absolute;margin-left: -115;margin-top:0; z-index: 1; font-weight: bold; color:#FFFFFF;">729/1044</b></td>
+</tr><tr><td nowrap height=10 style="font-size:9px" style="position: relative"><IMG SRC='i/1blue.gif' name=temp239871  id=temp239871 WIDTH=115.13043478261 HEIGHT=9 ALT="Уровень маны"><IMG  name=temp239872  id=temp239872 SRC=i/1silver.gif WIDTH=4.8695652173913 HEIGHT=9 ALT="Уровень маны"><b id="temp23987" style="position: absolute;margin-left: -115;margin-top:0; z-index: 1; font-weight: bold; color:#80FFFF;"><b>2648/2760</b></b></td>
+</tr>
+        </table>
+    </TD>
+</TR>
+<TR>
+<TD height=220 vAlign=top width=120 align=left>
+<DIV style="Z-INDEX: 1; POSITION: relative; WIDTH: 120px; HEIGHT: 220px;" bgcolor="black">
+<div style="position: absolute; top: 0; left: 0; width: 120px; height: 220px; overflow: visible">
+<div style="position: absolute; top: 0; left: 0; width: 120px; height: 220px; overflow: visible">
+
+<IMG border=0 src="i/shadow/1/indiv_104962.gif" width=120 height=218 onmouseout='ghideshow();' onmouseover='gfastshow("<b>Кошмарский</b><br>Сила: 3<BR>Ловкость: 3<BR>Интуиция: 3<BR>Выносливость: 49<BR>Интеллект: 100<BR>Мудрость: 100<BR>Духовность: 0<BR><br>Уровень духа: 22.00<BR>", null, null, event);'>
+            <div style="position:absolute; left:0px; top:0px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/misc/icons/icon_food_l10_e.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Яблоко Раздора</B> (еда)<BR> Осталось: 4 ч. 9 мин.  <br>Мф. мощности магии: +10", null, null, event)';>
+        </div>
+                    <div style="position:absolute; left:41px; top:0px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/misc/icons/icon_pot_base_200_bot4.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Снадобье Разума</B> (эликсир)<BR> Осталось: 1 ч. 17 мин.  <br>Интеллект: +22", null, null, event)';>
+        </div>
+                    <div style="position:absolute; left:82px; top:0px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/misc/icons/icon_pot_base_200_alldmg2_p1k.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Зелье Каменной Стойкости</B> (эликсир)<BR> Осталось: 2 ч. 19 мин.  <br>Защита от урона: +150", null, null, event)';>
+        </div>
+                    <div style="position:absolute; left:0px; top:28px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/misc/icons/icon_pot_base_200_allmag2.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Великое Зелье Отрицания</B> (эликсир)<BR> Осталось: 1 ч. 19 мин.  <br>Защита от магии: +93", null, null, event)';>
+        </div>
+                    <div style="position:absolute; left:41px; top:28px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/misc/icons/icon_pot_base_50_regeneration.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Эликсир Восстановления</B> (эликсир)<BR> Осталось: 19 мин.  <br>Восстановление HP (%): +125", null, null, event)';>
+        </div>
+                    <div style="position:absolute; left:82px; top:28px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/misc/icons/spell_stat_intel.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Холодный Разум</B> (свиток)<BR> Осталось: 20 мин.  <br>Интеллект: +10<br>", null, null, event)';>
+        </div>
+                    <div style="position:absolute; left:0px; top:56px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/misc/icons/icon_pot_base_50_mana_regen.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Эликсир Потока</B> (эликсир)<BR> Осталось: 20 мин.  <br>Восстановление маны (%): +101", null, null, event)';>
+        </div>
+                    <div style="position:absolute; left:41px; top:56px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/misc/icons/icon_spell_powerup3.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Воздушное Усиление</B> (заклятие)<BR> Осталось: 20 мин.  <br>Мф. мощности магии Воздуха: +25", null, null, event)';>
+        </div>
+                    <div style="position:absolute; left:82px; top:56px; width:40px; height:25px; z-index:2" width=40 height=25 ><IMG class="prOrEffOnShadow" width=40 height=25 src='i/sh/invoke_movespeed_dungeon60_5.gif' onmouseout='ghideshow();' onmouseover='gfastshow("<B>Мягкая поступь</B> (заклятие)<BR> Осталось: 4 дн. 13 ч.  <br>Уменьшает на 60% задержку перемещения в подземельях.<br>", null, null, event)';>
+        </div>
+                <div style="position:absolute; left:0px; top:84px; width:40px; height:25px; z-index:2;" >
+                <IMG class="prOrEffOnShadow" width=40 height=25 src='i/priem/wis_air_sign.gif' onmouseout='hideshow();'
+             onmouseover='fastshow("<B>Знак Воздуха</B> (приём)<BR><br>Маг получает 10 маны каждый ход.<br> Стоимость всех заклинаний снижена на 3%.")';>
+    </div>
+            <div style="position:absolute; left:41px; top:84px; width:40px; height:25px; z-index:2;" >
+                <IMG class="prOrEffOnShadow" width=40 height=25 src='i/priem/wis_gray_manabarrier10.gif' onmouseout='hideshow();'
+             onmouseover='fastshow("<B>Магический Барьер [10]</B> (приём)<BR>Магический барьер способен поглотить ещё <b> 847</b> <br>ед. урона")';>
+    </div>
+            <div style="position:absolute; left:82px; top:84px; width:40px; height:25px; z-index:2;" >
+                <IMG class="prOrEffOnShadow" width=40 height=25 src='i/priem/spirit_block25.gif' onmouseout='hideshow();'
+             onmouseover='fastshow("<B>Призрачная Защита</B> (приём)<BR><br> До вашего следующего размена ударами, вы получаете лишь четверть повреждений от оружия или магии.")';>
+    </div>
+           <!---
+<DIV style="Z-INDEX: 2; POSITION: absolute; WIDTH: 120px; HEIGHT: 220px; TOP: 0px; LEFT: 0px"></DIV>
+</DIV> --->
+</div></div></div>
+</TD>
+</TR>
+<TR>
+    <TD>
+        <a  onclick="return confirm('Использовать сейчас?')" href="?edit=1&use=39324740" onmouseout='ghideshow();' onmouseover='gfastshow("Отвар василиска<br>Долговечность: 0/1")' ><IMG border=0 alt="" src="/i/sh/invoke_kar3_basil.gif" width=40 height=20></a><IMG border=0 alt="" src="i/w15.gif" width=40 height=20><a  onclick="return confirm('Использовать сейчас?')" href="?edit=1&use=39324742" onmouseout='ghideshow();' onmouseover='gfastshow("Отвар василиска<br>Долговечность: 0/1")' ><IMG border=0 alt="" src="/i/sh/invoke_kar3_basil.gif" width=40 height=20></a><BR><IMG border=0 alt="" src="i/w20.gif" width=40 height=20><IMG border=0 alt="" src="i/w20.gif" width=40 height=20><IMG border=0 alt="" src="i/w20.gif" width=40 height=20>    </TD>
+</TR>
+</TABLE>
+
+</TD>
+<TD>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD style="BACKGROUND-IMAGE: none">
+            <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/yuvelirnye-tovary/sergi/sergi-cepnoj-molnii/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/clip85.gif" width=60 height=20 title="Серьги Цепной Молнии
+Долговечность: 7/50
+Уровень жизни +33" alt="Серьги Цепной Молнии
+Долговечность: 7/50
+Уровень жизни +33" ></TD></TR>
+<TR>
+    <TD style="BACKGROUND-IMAGE: none">
+        <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/yuvelirnye-tovary/ozherelya/amulet-cepnyh-molnij/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/amulet88.gif" width=60 height=20 title="Амулет Цепных Молний
+Долговечность: 0/50
+Уровень жизни +40
+Уровень маны +120" alt="Амулет Цепных Молний
+Долговечность: 0/50
+Уровень жизни +40
+Уровень маны +120" ></TD>
+</TR>
+
+<TR>
+    <TD>
+        <TABLE border=0 cellSpacing=0 cellPadding=0>
+            <TBODY>
+            <TR>
+                <TD style="BACKGROUND-IMAGE: none"><img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/yuvelirnye-tovary/kolca/kolco-valentaya-mag-9/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/ring131.gif" width=20 height=20 title="Кольцо Валентая [9]
+Долговечность: 7/20
+Уровень маны +20" alt="Кольцо Валентая [9]
+Долговечность: 7/20
+Уровень маны +20" ></td>
+                <TD style="BACKGROUND-IMAGE: none"><img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/yuvelirnye-tovary/kolca/kolco-valentaya-mag-9/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/ring131.gif" width=20 height=20 title="Кольцо Валентая [9]
+Долговечность: 7/20
+Уровень маны +20" alt="Кольцо Валентая [9]
+Долговечность: 7/20
+Уровень маны +20" ></td>
+                <TD style="BACKGROUND-IMAGE: none"><img  onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/yuvelirnye-tovary/kolca/kolco-valentaya-mag-9/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/ring131.gif" width=20 height=20 title="Кольцо Валентая [9]
+Долговечность: 7/20
+Уровень маны +20" alt="Кольцо Валентая [9]
+Долговечность: 7/20
+Уровень маны +20" ></td>
+            </TR>
+            </TBODY>
+        </TABLE>
+    </TD>
+</TR>
+<TR>
+    <TD style="BACKGROUND-IMAGE: none">
+        <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/odezhda/perchatki/perchatki-reshimosti-10/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/naruchi84.gif" width=60 height=40 title="Перчатки Решимости [10]
+Долговечность: 7/50
+Уровень жизни +25" alt="Перчатки Решимости [10]
+Долговечность: 7/50
+Уровень жизни +25" ></TD>
+</TR>
+<TR>
+    <TD style="BACKGROUND-IMAGE: none">
+    <img src="i/w10.gif" width=60 height=60 alt="Пустой слот щит" title="Пустой слот щит"></TD>
+</TR>
+<TR>
+    <TD style="BACKGROUND-IMAGE: none">
+    <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/odezhda/ponozhi/shtany-reshimosti-10/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/leg15.gif" width=60 height=80 title="Штаны Решимости [10]
+Долговечность: 7/50
+Уровень жизни +25
+Броня пояса: 6-20
+Броня ног: 6-20
+Уровень маны +100" alt="Штаны Решимости [10]
+Долговечность: 7/50
+Уровень жизни +25
+Броня пояса: 6-20
+Броня ног: 6-20
+Уровень маны +100" ></TD>
+</TR>
+<TR><TD style="BACKGROUND-IMAGE: none">
+        <img onmouseover="wr_mouse_over2(this, event);" onmouseout="wr_mouse_out();"  onclick="window.open('/docs/subject/odezhda/obuv/sapogi-haosa-9/', '_blank'); return false;"  style="cursor:pointer"   src="i/sh/aboots100.gif" width=60 height=40 title="Сапоги Хаоса [9]
+Долговечность: 3/500
+Уровень жизни +100
+Броня ног: 13-22
+Уровень маны +100" alt="Сапоги Хаоса [9]
+Долговечность: 3/500
+Уровень жизни +100
+Броня ног: 13-22
+Уровень маны +100" ></TD>
+</TR>
+</TBODY>
+</TABLE>
+</TD>
+</TR>
+
+
+
+</TBODY>
+</TABLE>
+</TD>
+</TR>
+<TR>
+    <TD></TD>
+        </A>
+</TABLE>
+</CENTER><CENTER>
+
+<TABLE cellPadding=0 cellSpacing=0 width="100%">
+        <TBODY>
+		      </table>
+                </TD>
+        </TR>
+    </TABLE>
+</div>
+<div id="f-right-column" >
+    <TABLE width=250 cellspacing=0 cellpadding=0>
+        <TR>
+            <TD valign=top width=250 nowrap>
+                <CENTER>
+                    <!-- memcachedshowpersout_block1(364619651)_begin -->
+<script type="text/javascript">
+        var wrAltTxt = false;
+        var wrCityName = 'Capital city';
+        var wrNameOfCircle = '';
+        var wr_mouse_over = function (e)
+        {
+			if (typeof(e) == 'undefined' || typeof(e.target) == 'undefined')
+			{
+				var x = event.x + document.body.scrollLeft;
+				var y = event.y + document.body.scrollTop;
+			}
+			else
+			{
+				var x = e.pageX;
+				var y = e.pageY;
+			}
+
+			wr_mouse_out();
+
+			wrAltTxt = document.createElement('div');
+			wrAltTxt.style.cssText = 'position: absolute; top: ' + (y + 14) + 'px; left: ' + (x + 12) + 'px; background: #ffffcb; border: 1px solid #6e6953;';
+			html = '<p style="font: 10px verdana, tahoma, arial; margin: 2px; padding: 0;"><b>' + wrCityName + '</b><br>' + wrNameOfCircle + '</p>'
+			wrAltTxt.innerHTML = html;
+			document.body.appendChild(wrAltTxt);
+        };
+
+        var wr_mouse_over2 = function (elem, e)
+        {
+			if (typeof(e) == 'undefined' || typeof(e.target) == 'undefined')
+			{
+				return false;
+			}
+			else
+			{
+				var x = e.pageX;
+				var y = e.pageY;
+			}
+
+			wr_mouse_out();
+
+			wrAltTxt = document.createElement('div');
+			wrAltTxt.style.cssText = 'z-index: 1; position: absolute; top: ' + (y + 14) + 'px; left: ' + (x + 12) + 'px; background: #ffffcb; border: 1px solid #6e6953; font: 10px verdana, tahoma, arial; padding: 5px;';
+			if (elem.title)
+			{
+				html = elem.title;
+				elem.alt = elem.title;
+				elem.title = '';
+			}
+			else html = elem.alt;
+
+			html = html.replace(/[\n]/g, '<br>');
+
+			wrAltTxt.innerHTML = html;
+			document.body.appendChild(wrAltTxt);
+        };
+
+        var wr_mouse_over_cap = function (e)
+        {
+			wrCityName = 'Capital city';
+			wrNameOfCircle = wrNameOfCircle1;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_dem = function (e)
+        {
+			wrCityName = 'Demons city';
+			wrNameOfCircle = wrNameOfCircle2;
+			wr_mouse_over(e);
+        }
+        var wr_mouse_over_sun = function (e)
+        {
+			wrCityName = 'Sun city';
+			wrNameOfCircle = wrNameOfCircle11;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_dep = function (e)
+        {
+			wrCityName = 'Angels city';
+			wrNameOfCircle = wrNameOfCircle3;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_glm = function (e)
+        {
+			wrCityName = 'Sand city';
+			wrNameOfCircle = wrNameOfCircle4;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_blood = function (e)
+        {
+			wrCityName = 'Алтарь Крови';
+			wrNameOfCircle = wrNameOfCircle5;
+			wr_mouse_over(e);
+        }
+        var wr_mouse_over_lost = function (e)
+        {
+			wrCityName = 'Emeralds city';
+			wrNameOfCircle = wrNameOfCircle7;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_over_ptu = function (e)
+        {
+			wrCityName = 'Храм Знаний';
+			wrNameOfCircle = wrNameOfCircle6;
+			wr_mouse_over(e);
+        }
+
+        var wr_mouse_out = function ()
+        {
+			if (wrAltTxt)
+			{
+				wrAltTxt.parentNode.removeChild(wrAltTxt);
+				wrAltTxt = false;
+			}
+        };
+
+    </script>
+
+<CENTER>
+
+<TABLE cellspacing=0 cellpadding=0 style="	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFFFFF;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-left-color: #FFFFFF;
+	padding: 2px;">
+
+<TR>
+<TD>
+<TABLE border=0 cellSpacing=1 cellPadding=0 width="100%">
+<TBODY>
+<TR vAlign=top>
+<TD>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+
+<TR>
+<TD style="BACKGROUND-IMAGE:none">
+            <img src="i/w9.gif" width=60 height=60 alt="Пустой слот шлем" title="Пустой слот шлем">    </TD>
+</TR>
+
+<TR>
+    <TD style="BACKGROUND-IMAGE:none">
+        <img src="i/w18.gif" width=60 height=40 alt="Пустой слот наручи" title="Пустой слот наручи"></TD>
+</TR>
+
+    <TR>
+        <TD style="BACKGROUND-IMAGE: none">
+        <img src="i/w3.gif" width=60 height=60 alt="Пустой слот оружие" title="Пустой слот оружие"></TD>
+    </TR>
+
+    <TR>
+        <TD style="BACKGROUND-IMAGE: none">
+        <img src="i/w4.gif" width=60 height=80 alt="Пустой слот броня" title="Пустой слот броня"></TD>
+    </TR>
+
+<TR><TD style="BACKGROUND-IMAGE: none">
+<img src="i/w5.gif" width=60 height=40 alt="Пустой слот пояс" title="Пустой слот пояс"></TD></TR>
+</TBODY>
+</TABLE>
+</TD>
+<TD>
+    <!-- memcachedshowpersout_block1(364619651)_end --><TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+<TR>
+    <TD height=20 vAlign=middle>
+        <table cellspacing="0" cellpadding="0" style='line-height: 1'>
+             <tr><td nowrap style="font-size:9px" style="position: relative">
+<IMG SRC='i/1green.gif' name=HP1  id=HP1  WIDTH=120 HEIGHT=9 ALT="Уровень жизни"><IMG SRC=i/1silver.gif name=HP2  id=HP2  WIDTH=0 HEIGHT=9 ALT="Уровень жизни"><b  id="HP" style="position: absolute;margin-left: -115;margin-top:0; z-index: 1; font-weight: bold; color:#FFFFFF;">900/900</b></td>
+</tr>
+        </table>
+    </TD>
+</TR>
+<TR>
+<TD height=220 vAlign=top width=120 align=left>
+<DIV style="Z-INDEX: 1; POSITION: relative; WIDTH: 120px; HEIGHT: 220px;" bgcolor="black">
+<div style="position: absolute; top: 0; left: 0; width: 120px; height: 220px; overflow: visible">
+<div style="position: absolute; top: 0; left: 0; width: 120px; height: 220px; overflow: visible">
+
+<IMG border=0 src="i/shadow/0/1040a_dr8472409823.gif" width=120 height=218 onmouseout='ghideshow();' onmouseover='gfastshow("<b>Заблудшая Душа</b><br>Сила: 10<BR>Ловкость: 25<BR>Интуиция: 25<BR>Выносливость: 40<BR>Интеллект: 25<BR>Мудрость: 40<BR>Духовность: 0<BR>", null, null, event);'>
+       <!---
+<DIV style="Z-INDEX: 2; POSITION: absolute; WIDTH: 120px; HEIGHT: 220px; TOP: 0px; LEFT: 0px"></DIV>
+</DIV> --->
+</div></div></div>
+</TD>
+</TR>
+<TR>
+    <TD>
+        <IMG border=0 alt="" src="i/w15.gif" width=40 height=20><IMG border=0 alt="" src="i/w15.gif" width=40 height=20><IMG border=0 alt="" src="i/w15.gif" width=40 height=20><BR><IMG border=0 alt="" src="i/w20.gif" width=40 height=20><IMG border=0 alt="" src="i/w20.gif" width=40 height=20><IMG border=0 alt="" src="i/w20.gif" width=40 height=20>    </TD>
+</TR>
+</TABLE>
+
+</TD>
+<TD>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD style="BACKGROUND-IMAGE: none">
+            <img src="i/w1.gif" width=60 height=20 alt="Пустой слот серьги" title="Пустой слот серьги"></TD></TR>
+<TR>
+    <TD style="BACKGROUND-IMAGE: none">
+        <img src="i/w2.gif" width=60 height=20 alt="Пустой слот ожерелье" title="Пустой слот ожерелье"></TD>
+</TR>
+
+<TR>
+    <TD>
+        <TABLE border=0 cellSpacing=0 cellPadding=0>
+            <TBODY>
+            <TR>
+                <TD style="BACKGROUND-IMAGE: none"><img src="i/w6.gif" width=20 height=20 alt="Пустой слот кольцо" title="Пустой слот кольцо"></td>
+                <TD style="BACKGROUND-IMAGE: none"><img src="i/w6.gif" width=20 height=20 alt="Пустой слот кольцо" title="Пустой слот кольцо"></td>
+                <TD style="BACKGROUND-IMAGE: none"><img src="i/w6.gif" width=20 height=20 alt="Пустой слот кольцо" title="Пустой слот кольцо"></td>
+            </TR>
+            </TBODY>
+        </TABLE>
+    </TD>
+</TR>
+<TR>
+    <TD style="BACKGROUND-IMAGE: none">
+        <img src="i/w11.gif" width=60 height=40 alt="Пустой слот перчатки" title="Пустой слот перчатки"></TD>
+</TR>
+<TR>
+    <TD style="BACKGROUND-IMAGE: none">
+    <img src="i/w10.gif" width=60 height=60 alt="Пустой слот щит" title="Пустой слот щит"></TD>
+</TR>
+<TR>
+    <TD style="BACKGROUND-IMAGE: none">
+    <img src="i/w19.gif" width=60 height=80 alt="Пустой слот поножи" title="Пустой слот поножи"></TD>
+</TR>
+<TR><TD style="BACKGROUND-IMAGE: none">
+        <img src="i/w12.gif" width=60 height=40 alt="Пустой слот обувь" title="Пустой слот обувь"></TD>
+</TR>
+</TBODY>
+</TABLE>
+</TD>
+</TR>
+
+
+
+</TBODY>
+</TABLE>
+</TD>
+</TR>
+<TR>
+    <TD></TD>
+        </A>
+</TABLE>
+</CENTER><CENTER>
+
+<TABLE cellPadding=0 cellSpacing=0 width="100%">
+        <TBODY>
+		      </table>
+                </TD>
+        </TR>
+    </TABLE>
+
+</div>
+<div id="f-content" >
+
+            <div style="height: 10px;">
+                <div style="float:left"><b><font color=#003388><img src="/i/align_0.98.gif"><img title="DarkRunes" src="/i/klan/DarkRunes.gif">Кошмарский [10]<a href="/inf.php?104962" target="_blank"><img src="/i/inf.gif" width=12 height=11 alt="Инф. о Кошмарский"></a></b></font>
+                                    </div>
+                                            <div style="float: right"><b><font color=#003388>Заблудшая Душа [10]<a href="/inf.php?364619651" target="_blank"><img src="/i/inf.gif" width=12 height=11 alt="Инф. о Заблудшая Душа"></a></b></font></div>
+                    </div>
+        <br>
+            <CENTER>
+                <a  onclick="findlogin('Введите имя персонажа', 'fbattle.php?edit=1&use=37991340', 'target'); "href='#'><img src="i/sh/snowball1.gif" width=40 title="Снежок  Долговечность: 0/1"  Долговечность: 0/1" height=25 alt="Использовать  Снежок
+Долговечность: 0/1"></a><a  onclick="findlogin('Введите имя персонажа', 'fbattle.php?edit=1&use=39324797', 'target'); "href='#'><img src="i/sh/cureHP900_50.gif" width=40 title="Восстановление энергии 900HP  Долговечность: 23/50"  Долговечность: 23/50" height=25 alt="Использовать  Восстановление энергии 900HP
+Долговечность: 23/50"></a><a  onclick="findlogin('Введите имя персонажа', 'fbattle.php?edit=1&use=38456514', 'target'); "href='#'><img src="i/sh/cureHP1200_50.gif" width=40 title="Восстановление энергии 1200HP  Долговечность: 22/50"  Долговечность: 22/50" height=25 alt="Использовать  Восстановление энергии 1200HP
+Долговечность: 22/50"></a><a  onclick="findlogin('Введите имя персонажа', 'fbattle.php?edit=1&use=38934716', 'target'); "href='#'><img src="i/sh/cureMana1500_90.gif" width=40 title="Восстановление Маны 1500MP  Долговечность: 85/90"  Долговечность: 85/90" height=25 alt="Использовать  Восстановление Маны 1500MP
+Долговечность: 85/90"></a><a  onclick="findlogin('Введите имя персонажа', 'fbattle.php?edit=1&use=37692448', 'target'); "href='#'><img src="i/sh/snowball1.gif" width=40 title="Снежок  Долговечность: 0/1"  Долговечность: 0/1" height=25 alt="Использовать  Снежок
+Долговечность: 0/1"></a><a  onclick="if(confirm('Использовать сейчас?')) { window.location='fbattle.php?edit=1&use=39423241';}"href='#'><img src="i/sh/magearmor.gif" width=40 title="Хрустальный Щит  Долговечность: 0/5"  Долговечность: 0/5" height=25 alt="Использовать  Хрустальный Щит
+Долговечность: 0/5"></a><a  onclick="if(confirm('Использовать сейчас?')) { window.location='fbattle.php?edit=1&use=39366111';}"href='#'><img src="i/sh/magearmor.gif" width=40 title="Хрустальный Щит  Долговечность: 3/5"  Долговечность: 3/5" height=25 alt="Использовать  Хрустальный Щит
+Долговечность: 3/5"></a><a  onclick="findlogin('Введите имя персонажа', 'fbattle.php?edit=1&use=39324863', 'target'); "href='#'><img src="i/sh/cureMana1250_60.gif" width=40 title="Восстановление Маны 1250MP  Долговечность: 2/60"  Долговечность: 2/60" height=25 alt="Использовать  Восстановление Маны 1250MP
+Долговечность: 2/60"></a><img src=i/w13.gif width=40 height=25  alt='пустой слот магия'><img src=i/w13.gif width=40 height=25  alt='пустой слот магия'><img src=i/w13.gif width=40 height=25  alt='пустой слот магия'><img src=i/w13.gif width=40 height=25  alt='пустой слот магия'>                <div style="min-height: 110px">
+                <TABLE cellspacing=0 cellpadding=0>
+                                            <TR>
+                            <TD align=center bgcolor=f2f0f0><b>Атака</b></TD>
+                            <TD>&nbsp;</TD>
+                            <TD align=center bgcolor=f2f0f0><b>Защита</b></TD>
+                        </TR>
+                        <TR>
+                            <TD>
+                                <SCRIPT>
+                                    DrawDots(1);
+                                    document.getElementById("r_0_0").focus();
+                                </SCRIPT>
+                            </TD>
+                            <TD>&nbsp;</TD>
+                            <TD>
+                                <script>DrawDots(0);</script>
+                            </TD>
+                        </TR>
+                                        <TR>
+                        <TD colspan=3 align=center bgcolor=f2f0f0 width="310">
+                            <table cellspacing=0 cellpadding=0 width=100%>
+                                <tr>
+                                    <td align=center>
+                                        <script>DrawButtons();</script>                                    </td>
+                                    <td align=right>
+                                            <a onClick="findlogin2('Выберите врага', 'fbattle.php', 'target',  '', '1', '<INPUT  type=hidden name=changeEnemy value=1>')"><img
+                                                    src='/i/misc/ico_change.gif' width=16 height=19 style='cursor:pointer' alt='Сменить противнивка (3)'></a>                                        <a onClick="location.href='/fbattle.php?reload&batl=';"><img id=reload_fbattle src='i/ico_refresh.gif' width=16 height=19 style='cursor:pointer' alt='Обновить'></a></td>
+                                </tr>
+                            </table>
+                        </TD>
+                    </TR>
+                    <INPUT TYPE=hidden name=enemy value="364619651">
+                </TABLE>
+                </div>
+                            <br>
+            <div style='width:420px;'>
+                <script>
+DrawRes(0, 0, 0, 0, 0, 0, 22, '22.00');
+DrawTrick(0,'wis_air_sparks10','Искры [10]',1,'Наносит 1-7 целям 1-79 урона электричеством. ','0,0,0,0,0,0,0,137,16,1,0,0',1,'','Заблудшая Душа',1,'wis_air_sparks10');DrawTrick(1,'wis_air_shaft10','Молния [10]',0,'Наносит цели 1-167 урона электричеством. ','0,0,0,0,0,0,0,72,0,0,0,0',1,'','Заблудшая Душа',1,'wis_air_shaft10');DrawTrick(1,'wis_air_chainlight10','Цепь Молний [10]',0,'Наносит 2-5 целям 1-97 урона электричеством. ','0,0,0,0,0,0,0,151,3,0,0,0',1,'','Заблудшая Душа',1,'wis_air_chainlight10');DrawTrick(0,'wis_air_shield09','Туманный Образ [9]',1,'Следующая атака по вам будет отражена в случайного противника<br>Прием не подвержен действию шока. ','0,0,0,0,0,1,0,196,8,1,0,0',0,'','Заблудшая Душа',1,'wis_air_shield09');DrawTrick(0,'wis_water_shield_10','Иней [10]',1,'Вы получаете на 20% меньше<br>урона 4 последующих размена,<br>атакующий оружием получает<br>уязвимость к магии воды и часть поглощенного урона<br>Не подвержен действию шока','0,0,0,0,0,0,0,205,8,1,0,0',0,'','Заблудшая Душа',1,'wis_water_shield_10');DrawTrick(1,'wis_water_frost10','Оледенение [10]',0,'Мнгновенно наносит цели 75 урона и еще 11 за четыре хода.','0,0,0,0,0,0,0,82,0,0,0,0',1,'','Заблудшая Душа',1,'wis_water_frost10');DrawTrick(1,'wis_water_break','Оледенение: Разбить!',0,'Наносит текущей цели подверженной оледенению 144 урона магией воды.<br>Урон увеличен на 50% за каждый уровень оледенения,<br>если HP цели менее 33%.','0,0,0,0,0,0,0,156,5,0,0,0',1,'','Заблудшая Душа',1,'wis_water_break');DrawTrick(0,'wis_air_charge','Статика',1,'Молния, Цепь молний, Искра, Искры, и удары по Воздушному щиту будут заряжать цель,<br>увеличивая получаемый от Магии Воздуха урон на 1%.<br>Маг может воспользоваться накопленными зарядами.','0,0,0,0,0,0,1,20,3,1,0,0',1,'','Заблудшая Душа',1,'wis_air_charge');DrawTrick(0,'wis_air_charge_dmg','Заряд: Поражение',1,'Наносит цели 1-3% урона Магией Воздуха от ее максимального уровня жизни за каждый уровень заряда.<br>Заклинание не может нанести больше 250 ед. урона для 9-го уровня.<br>Заклинание не может нанести больше 300 ед. урона для 10-го уровня.<br>Заклинание не может нанести больше 350 ед. урона для 11-го уровня.','0,0,0,0,0,1,0,0,3,1,0,0',1,'','Заблудшая Душа',1,'wis_air_charge_dmg');DrawTrick(0,'wis_water_regen10','Регенерация [10]',1,'Восстанавливает цели 200HP за восемь ходов магией воды. Заклинание требует ману каждый ход','0,0,0,0,0,2,0,91,3,1,0,0',1,'','Кошмарский',1,'wis_water_regen10');DrawTrick(0,'wis_air_speed','Скорость Молнии',1,'Любой следующий прием не тратит хода.','0,0,0,0,0,0,4,69,10,5,0,0',0,'','Заблудшая Душа',1,'wis_air_speed');DrawTrick(0,'wis_air_sacrifice','Жертва Воздуху',1,'Маг получает +25% мощности Магии Воздуха на 4 хода.<br>Снимается приёмом Очиститься Кровью.','0,0,0,0,0,5,0,8,10,1,0,0',0,'','Заблудшая Душа',1,'wis_air_sacrifice');DrawTrick(0,'wis_air_sign','Знак Воздуха',1,'Маг получает 10 маны каждый ход.<br> Стоимость всех заклинаний снижена на 3%.','0,0,0,0,0,0,1,9,0,0,0,0',0,'','Заблудшая Душа',1,'wis_air_sign');DrawTrick(1,'wis_gray_meditation','Медитация',0,'Восстанавливает 10% маны.','0,0,0,0,0,0,2,0,0,0,0,0',0,'','Заблудшая Душа',1,'wis_gray_meditation');DrawTrick(0,'wis_earth_shield2','Песчаный Щит',1,'Вы получаете на 30% меньше урона от магии в течении 5 ходов.<br>Прием не подвержен действию шока.','0,0,0,0,0,0,0,123,8,1,0,0',0,'','Заблудшая Душа',1,'wis_earth_shield2');DrawTrick(0,'wis_gray_manabarrier10','Магический Барьер [10]',1,'Создает магический барьер вокруг мага, способный поглотить 518 ед. урона,<br> ценой 1.25 ед. маны за каждую единицу урона.<br>Барьер поглощает 70%   повреждений.<br>Шанс нанести критический удар по барьеру уменьшен на 20%.<br> Этот приём не подвержен действию шока.','0,0,0,0,0,0,0,12,0,0,0,0',0,'','Заблудшая Душа',1,'wis_gray_manabarrier10');DrawTrick(0,'hp_enrage','Ярость',1,'Увеличивает ваш урон на (5%) до конца боя. Можно применять трижды.','0,0,0,0,0,5,0,0,0,0,0,0',0,'','Заблудшая Душа',1,'hp_enrage');DrawTrick(0,'spirit_block25','Призрачная Защита',1,' До вашего следующего размена ударами, вы получаете лишь четверть повреждений от оружия или магии.','0,0,0,0,0,0,5,0,5,5,0,0',0,'','Заблудшая Душа',1,'spirit_block25');</script><a href="?uszver=1"><img width=40 height=25 src=i/sh/pet_unleash.gif  onmouseout='hideshow();' onmouseover='fastshow("<B>Выпустить зверя</B>", event)'></a>            </div>
+            </CENTER>
+                
+
+</CENTER>
+            <HR>
+    <div id=mes align=center>
+                <IMG SRC=i/lock.gif WIDTH=20 HEIGHT=15 BORDER=0 ALT="приват" style="cursor:pointer" onClick="mytop.AddToPrivate('Кошмарский'); ">
+        <span onclick="mytop.AddTo('Кошмарский')" oncontextmenu="return OpenMenu(event,11)"class='B1'>Кошмарский</span> [729/1044]        <b>против</b>
+                <IMG SRC=i/lock.gif WIDTH=20 HEIGHT=15 BORDER=0 ALT="приват" style="cursor:pointer" onClick="mytop.AddToPrivate('Дух-Хранитель'); mytop.AddToPrivate('Заблудшая Душа'); ">
+        <span onclick="mytop.AddTo('Дух-Хранитель')" oncontextmenu="return OpenMenu(event,11)"class='B2U'>Дух-Хранитель</span> [2000/2000], <span onclick="mytop.AddTo('Заблудшая Душа')" oncontextmenu="return OpenMenu(event,11)"class='B2U'>Заблудшая Душа</span> [900/900]                <HR>
+    </div>
+        <div><span class=date2>13:08</span> <span class='B1'>Кошмарский</span>, нетрезво оценив положение, решил, что поможет ему только прием <b style=color:black>"Знак Воздуха"</b>.  (Уменьшение расхода манны (%): +3)<BR><!--usepstas md5ASsA1P94AbMpLk2ysynOTczJsStKLc4sLvHOT02zNTSw0YcIAmmgCk5OTgBE+g3l usepstas--><!-- ts 1396170529 --><span class=date2>13:08</span> <span class='B2'>Заблудшая Душа</span>, наконец сфокусировала свое внимание на поединке и наколдовала "<FONT color=#A00000><b>Призрачный Удар</b></font>" на <span class='B1'>Кошмарский</span>. <b style=color:#006699 onmouseout="ghideshow();" onmouseover="gfastshow('<b>Заблудшая Душа</b><br><br>Мощь: ??, Защита: 325, Подавление: 0')"> -8</b> [729/1044]<BR><!--usepstas md5ASsA1P94AbMpLk2ysynOTczJsStKLc4sLvHOT02zNTSw0YcIAmmgCk5OTgBE+g3l usepstas--><!-- ts 1396170529 --><span class=date2>13:08</span> Вспомнив, что для заклинания «Захват мира» ему нужна девственница, <span class='B1'>Кошмарский</span>, произнес заклинание  "<FONT color=#00000><b>Магический Барьер [10]</b></font>". <BR><span class=date>13:08</span> <B><font color="#B06A00"><B>Заблудшая Душа</B> [10]<a href=inf.php?364619651 target=_blank><IMG SRC=i/inf.gif WIDTH=12 HEIGHT=11 ALT="Инф. о Заблудшая Душа"></a></font></B> вмешался в поединок!<BR>Часы показывали <span class=date>2014.03.30 13.08</span>, когда <b><font color="#6666CC"><img src="i/align_0.98.gif"><img title="DarkRunes" src="i/klan/DarkRunes.gif"><B>Кошмарский</B> [10]<a href=inf.php?104962 target=_blank><IMG SRC=i/inf.gif WIDTH=12 HEIGHT=11 ALT="Инф. о Кошмарский"></a></font></b> и <b><font color="#B06A00"><B>Дух-Хранитель</B> [10]<a href=inf.php?364619650 target=_blank><IMG SRC=i/inf.gif WIDTH=12 HEIGHT=11 ALT="Инф. о Дух-Хранитель"></a></font></b> бросили вызов друг другу. <BR>Полную версию смотрите <a href="logs.php?log=33134957" target="_blank">здесь&raquo;</a><BR>
+        <font class=dsc>(Бой идет с таймаутом 3 мин.)</font><BR>
+        <BR>
+На данный момент вами нанесено урона: <B>0 HP</B>.
+</div>
+</div>
+
+
+</div>
+</FORM>
+
+<!-- <DIV ID=oMenu CLASS=menu onmouseout="closeMenu()"></DIV> -->
+<DIV ID="oMenu" onmouseout="closeMenu()" style="position:absolute; border:1px solid #666; background-color:#CCC; display:none; "></DIV>
+
+
+<div id="wr_godsend_game_ask_window_261536"
+                         style="display: none; position: absolute; top: 41px; left: 85px; width: 270px; height: 126px; border: none; background: url('/grotto/img/win_game.png');"></div>
+                    <div id="wr_godsend_user_del_83128"
+                         style="display: none; position: absolute; top: 33px; left: 200px; width: 270px; height: 103px; border: none; background: url('/grotto/img/win_user_link_1.png');"></div>
+
+<script type="text/javascript"> if(document.getElementById("reload_fbattle")) document.getElementById("reload_fbattle").focus(); </script></BODY>
+</HTML>
