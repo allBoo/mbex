@@ -46,19 +46,20 @@ var dungeon_routes = new RoutesCollection([
             new Click(8, 15),   // g9
             new Move(1, 12),    // j2
             new Move(2, 14),    // h3
+            new Move(2, 20),    // b3
             new Move(10, 19),   // c11
             new Move(6, 8),     // n7
-            new Move(5, 8),     // n6
+            new Move(5, 8, 4, 7),     // o5
             new Click(1, 7)     // o2 - exit
         ]),
         // 4-й этаж
         new Route(4, [
-            new Move(9, 4),     // h10
-            new Click(9, 1),    // k10
-            new Move(8, 1),     // k9
-            new Move(8, 3),     // i9
-            new Move(10, 3),    // i11
             new Move(10, 1),    // k11
+            new Click(9, 1),    // k10
+            new Move(10, 3),    // k11
+            new Move(8,  3),    // i9
+            new Move(8,  1),    // k9
+            new Move(9,  4),    // k9
             new Move(3, 10),    // b4
             new Move(1, 10),    // b2
             new Move(2, 9),     // c3
@@ -102,7 +103,7 @@ var dungeon_routes = new RoutesCollection([
             new ClickNow(6, 6, 'S'),      // дверь
             new Click(7, 20),    // камень с8
             new Click(10, 21),   // камень b11
-            new Move(8, 21),     // b9 - спуск
+            new Move(8, 21, 13, 19),     // b9 - спуск
             new Move(16, 18),    // e17
             new Move(18, 13)     // j19 - выход
         ]),
@@ -111,7 +112,7 @@ var dungeon_routes = new RoutesCollection([
             new Move(15, 8),     // d16
             new Move(20, 10),    // b21
             new Move(14, 5),     // g15
-            new Move(17, 3),     // k16 - ловушка
+            new Move(15, 1, 17, 3),     // k16 - ловушка
             new Move(20, 3),     // i22 - поиск слизи
             new Click(21, 1),    // k22
             new Move(22, 1)      // k23 - выход
@@ -126,17 +127,17 @@ var dungeon_routes = new RoutesCollection([
             new Move(5, 5),     // q6
             new Move(2, 2),     // t3
             new Move(6, 8),     // n7
-            new Move(4, 7),     // o5
+            new Move(5, 8, 4, 7),     // o5
             new Click(1, 7)     // o2 - exit
         ]),
         // 4-й этаж
         new Route(4, [
-            new Move(9, 4),     // h10
-            new Click(9, 1),    // k10
-            new Move(8, 1),     // k9
-            new Move(8, 3),     // i9
-            new Move(10, 3),    // i11
             new Move(10, 1),    // k11
+            new Click(9, 1),    // k10
+            new Move(10, 3),    // k11
+            new Move(8,  3),    // i9
+            new Move(8,  1),    // k9
+            new Move(9,  4),    // k9
             new Move(3, 10),    // b4
             new Move(1, 10),    // b2
             new Move(2, 9),     // c3

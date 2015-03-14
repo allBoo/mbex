@@ -318,12 +318,15 @@ function Move() {
     this.type = 'move';
     this.x = arguments[0];
     this.y = arguments[1];
+    this.tx = arguments[2];
+    this.ty = arguments[3];
 }
 Move.prototype.target = function() {
     return {x: this.x, y: this.y};
 };
 Move.prototype.reached = function() {
-    return this.x == internalState.position.x && this.y == internalState.position.y;
+    return (this.x == internalState.position.x && this.y == internalState.position.y) ||
+        (this.tx && this.ty && this.tx == internalState.position.x && this.ty == internalState.position.y);
 };
 Move.prototype.rotate = function() {
     return false;
