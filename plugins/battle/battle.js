@@ -135,7 +135,8 @@ function battle_simpleLoop() {
 				&& (
                     (internalState.enemies.count > 1 && ($('#mes .B2U').length + $('#mes .B2').length) == 1)
                     ||
-                    (internalState.enemies.current.name.match(/Древний Страж/gi) &&
+                    ((internalState.enemies.current.name.match(/Древний Страж/gi)
+                    || internalState.enemies.current.name.match(/Страж Сокровищ/gi)) &&
                         internalState.enemies.current.hp.current / internalState.enemies.current.hp.max <= 0.07)
                 )
 			) {
@@ -157,6 +158,9 @@ function battle_simpleLoop() {
                     || internalState.enemies.current.name.match(/Древний Страж/gi)
                     || internalState.enemies.current.name.match(/Пылающий Паразит/gi)
                     || internalState.enemies.current.name.match(/Искрящийся Паразит/gi)
+                    || internalState.enemies.current.name.match(/Механический Убийца/gi)
+                    || internalState.enemies.current.name.match(/Страж Сокровищ/gi)
+                    || internalState.enemies.current.name.match(/Мастер Грит/gi)
                 )
             ) {
                 click = true;

@@ -53,6 +53,12 @@
       "js": [ "jquery.js", "plugins/dungeons/models.js", "plugins/dungeons/routes.js", "plugins/dungeons/maps.js", "plugins/dungeons/dungeons.js" ],
       "run_at": "document_end",
       "all_frames": true
+    },
+    {
+      "matches": [ "http://mycombats.org/buttons.php", "http://*.mycombats.org/buttons.php*" ],
+      "js": [ "jquery.js", "plugins/flooder/flooder.js" ],
+      "run_at": "document_end",
+      "all_frames": true
     }
   ],
   "background": {

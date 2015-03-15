@@ -2,7 +2,7 @@
 var dungeonsPluginActive = false;
 
 //conf
-var settingsItems = ['route_Катакомбы'];
+var settingsItems = ['route_Катакомбы', 'route_ПТП'];
 var settings      = {};
 var internalState = {
 	dungeon: null,
@@ -101,6 +101,9 @@ function dungeons_whereIAm() {
 	if (url.match(/demonscity/gi)) {
 		internalState.position.dungeon = 'Катакомбы';
 	}
+    else if (url.match(/capitalcity/gi) || url.match(/\/\/mycombats/gi)) {
+        internalState.position.dungeon = 'ПТП';
+    }
 	else {
 		internalState.position.dungeon = null;
 	}
@@ -222,7 +225,7 @@ function dungeons_getPath() {
 		dungeons_saveState();
 
 		if (step.type === 'click') {
-			return 'click';
+			return step.prev ? 'click_prev' : 'click';
 		}
 		// если простой шаг, то загружаем следующий
 		else {
@@ -263,6 +266,9 @@ function dungeons_step(step) {
 	if (step === 'click') {
 		return dungeons_doMove('c');
 	}
+    else if (step === 'click_prev') {
+        return dungeons_doMove('c1');
+    }
 	// поворот
 	else if (step === 'tl' || step === 'tr') {
 		return dungeons_doMove(step);
@@ -304,6 +310,12 @@ function dungeons_doMove(direction) {
 		$('#wr_grotto_tpl3d_in').children().last().click();
 		//$('#wr_attack_win').children().first().focus();
 	}
+    else if (direction == 'c1') {
+        dungeons_saveState();
+
+        $('#wr_grotto_tpl3d_in').children().last().prev().click();
+        //$('#wr_attack_win').children().first().focus();
+    }
 }
 
 function dungeons_waitAndMove(direction)

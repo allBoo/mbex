@@ -153,5 +153,40 @@ var dungeon_routes = new RoutesCollection([
             new Click(3, 3),    // i4
             new Move(2, 3)      // i3 - exit
         ])
+    ]),
+
+
+    new Routes('ПТП 4-5 сундуки', 'ПТП', [
+        // 1-й этаж
+        new Route(1, [
+            new Click(5, 10)    // портал
+        ]),
+        // 4-й этаж
+        new Route(4, [
+            new Click(11, 11),  // сундук у зомбов
+            new Click(13, 14),  // сундук у стража
+            new Move(12, 15),   // страж
+            new Move(10, 12, 8, 3),   // портал
+            new Click(8, 11),   // сундук у механиков
+            new Click(5, 11),   // портал
+            new Move(7, 0),     // выход
+        ]),
+        new Route(5, [
+            new Click(17, 6),   // сундук
+            new Click(13, 6),   // сундук
+            new Click(8, 5),    // сундук
+            new Click(10, 1),   // сундук с ключем
+            new Click(11,15),   // сундук с руной
+            new Click(11,15, 1),   // сундук с руной
+            new Click(9, 15),   // сундук с руной
+            new Click(7, 15),   // сундук с руной
+            new Click(5, 15),   // сундук с руной
+            new Click(3, 15),   // сундук с руной
+            new Click(3, 15, 1),   // сундук с руной
+            new Click(3, 9),    // сундук
+            new Click(1, 12),   // сбор руны
+            new ClickNow(10, 11, 'N'), // дверь к Гриту
+            new Click(10, 8)    // сундук
+        ])
     ])
 ]);

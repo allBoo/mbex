@@ -264,6 +264,7 @@ function Click() {
     this.type = 'click';
     this.x = arguments[0];
     this.y = arguments[1];
+    this.prev = arguments[2];
 }
 Click.prototype.target = function() {
     // все через жопу)
