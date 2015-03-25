@@ -154,13 +154,23 @@ function battle_simpleLoop() {
                     || internalState.enemies.current.name.match(/Епископ/gi)
                     || internalState.enemies.current.name.match(/Чернокнижник/gi)
                     || internalState.enemies.current.name.match(/Проклятый Пленник/gi)
-                    || internalState.enemies.current.name.match(/Пожиратель Падали/gi)
                     || internalState.enemies.current.name.match(/Древний Страж/gi)
                     || internalState.enemies.current.name.match(/Пылающий Паразит/gi)
                     || internalState.enemies.current.name.match(/Искрящийся Паразит/gi)
                     || internalState.enemies.current.name.match(/Механический Убийца/gi)
                     || internalState.enemies.current.name.match(/Страж Сокровищ/gi)
                     || internalState.enemies.current.name.match(/Мастер Грит/gi)
+                )
+            ) {
+                click = true;
+            }
+
+            // шоки и осторожка
+            if (
+                ($(item).find('img[src*=hit_shock]').length
+                || $(item).find('img[src*=multi_hitshock]').length)
+                && (
+                    internalState.enemies.current.name.match(/Пожиратель Падали/gi)
                 )
             ) {
                 click = true;

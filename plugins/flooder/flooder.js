@@ -113,7 +113,7 @@ function flooder_loop() {
     var message = internalState.messages[lastMessageIndex];
     if (message) {
         console.log('Send message', message);
-        //message = 'private [trade]' + message;
+        message = 'private [trade]' + message;
         $('#ssmtext').val(message);
         $('#T3').find('a').first()[0].click();
     }
